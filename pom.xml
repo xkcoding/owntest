@@ -30,6 +30,7 @@
         <poi.version>4.0.1</poi.version>
         <xerces.version>2.12.0</xerces.version>
         <modelmapper.version>2.3.1</modelmapper.version>
+        <webmagic.version>0.7.3</webmagic.version>
     </properties>
 
     <dependencyManagement>
@@ -86,6 +87,21 @@
                 <groupId>org.modelmapper</groupId>
                 <artifactId>modelmapper</artifactId>
                 <version>${modelmapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-core</artifactId>
+                <version>${webmagic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-extension</artifactId>
+                <version>${webmagic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-selenium</artifactId>
+                <version>${webmagic.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
