@@ -22,7 +22,25 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class CsdnProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
-        System.out.println(page.getHtml().toString());
+        // 打印页面内容
+        // System.out.println(page.getHtml().toString());
+
+        // 获取当前页面所有URL
+        // System.out.println(page.getHtml().links().all());
+
+        // 根据正则表达式获取当前页指定URL
+        // System.out.println(page.getHtml().links().regex("https://blog.csdn.net/[a-z 0-9 -]+/article/details/[0-9]{8}").all());
+
+        // 添加目标地址
+        page.addTargetRequests(page.getHtml()
+                .links()
+                .regex("https://blog.csdn.net/[a-z 0-9 -]+/article/details/[0-9]{8}")
+                .all());
+        // 添加自定义变量到page对象
+        page.putField("title", page.getHtml()
+                .xpath("//*[@id=\"mainBox\"]/main/div[1]/div[1]/div/div[1]/h1")
+                .toString());
+
     }
 
     @Override
