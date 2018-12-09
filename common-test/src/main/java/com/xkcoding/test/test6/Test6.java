@@ -26,6 +26,7 @@ public class Test6 {
                 .addPipeline(new MyPipeline())
                 .addPipeline(new FilePipeline("/Users/yangkai.shen/Desktop/webmagic/file"))
                 .addPipeline(new JsonFilePipeline("/Users/yangkai.shen/Desktop/webmagic/json"))
+                .thread(5)
                 .run();
     }
 }
