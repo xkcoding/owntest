@@ -45,6 +45,16 @@ public class Jvm {
      */
     private String home;
 
+    /**
+     * JDK启动时间
+     */
+    private String startTime;
+
+    /**
+     * JDK运行时间
+     */
+    private String runTime;
+
     public double getTotal() {
         return NumberUtil.div(total, (1024 * 1024), 2);
     }
@@ -101,17 +111,20 @@ public class Jvm {
         this.home = home;
     }
 
-    /**
-     * JDK启动时间
-     */
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
     public String getStartTime() {
         return DateUtil.formatDateTime(new Date(ManagementFactory.getRuntimeMXBean()
                 .getStartTime()));
     }
 
-    /**
-     * JDK运行时间
-     */
+
+    public void setRunTime(String runTime) {
+        this.runTime = runTime;
+    }
+
     public String getRunTime() {
         long startTime = ManagementFactory.getRuntimeMXBean()
                 .getStartTime();
