@@ -16,6 +16,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 /**
  * <p>
@@ -37,11 +38,37 @@ public class Test2 {
 
     public static void main(String[] args) throws InterruptedException {
         Test2 test2 = new Test2();
-        //                test2.test1();
-        //        test2.test2();
-        test2.test3();
+        // test2.test1();
+        // test2.test2();
+        // test2.test3();
+        test2.test4();
     }
 
+    /**
+     * 测试分页导出，测试表头排序
+     */
+    public void test4() {
+        String fileName = "/Users/yangkai.shen/Desktop/multi-sheet.xlsx";
+        FileUtil.del(fileName);
+        try (ExcelWriter writer = ExcelUtil.getBigWriter(fileName)) {
+            writer.addHeaderAlias("desc","desc");
+            writer.addHeaderAlias("name","name");
+            writer.addHeaderAlias("age","age");
+            for (int i = 0; i < 10; i++) {
+                List<User> users = Lists.newArrayList();
+                int finalI = i;
+                IntStream.range(1, 10)
+                        .forEach(j -> users.add(new User().setName(j + "-user-" + finalI)
+                                .setAge(11 * j)
+                                .setDesc(j + "-desc-" + finalI)));
+                writer.write(users);
+            }
+        }
+    }
+
+    /**
+     * 测试多sheet导出
+     */
     public void test3() {
         String fileName = "/Users/yangkai.shen/Desktop/multi-sheet.xlsx";
         FileUtil.del(fileName);
