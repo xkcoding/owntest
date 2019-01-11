@@ -31,7 +31,7 @@ public class Test11 {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    class User {
+    static class User {
         private Integer id;
         private String name;
     }
