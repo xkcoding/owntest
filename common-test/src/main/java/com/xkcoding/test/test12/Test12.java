@@ -26,11 +26,12 @@ import java.util.stream.Collectors;
 @Slf4j
 public class Test12 {
     public static void main(String[] args) {
-        String filePath = "/Users/yangkai.shen/Desktop/采集作业-23_元数据导出.xlsx";
+        String filePath = "/Users/yangkai.shen/Desktop/采集作业-2_元数据导出.xlsx";
         Map<String, List<String>> headerGroup = Maps.newHashMap();
 
         AtomicInteger dbCount = new AtomicInteger(0);
-        ExcelUtil.read07BySax(filePath, 2, ((sheetIndex, rowIndex, rowList) -> {
+        ExcelUtil.read07BySax(filePath, 0, ((sheetIndex, rowIndex, rowList) -> {
+            System.out.println(rowList);
             dbCount.getAndIncrement();
             if (rowIndex == 0) {
                 headerGroup.put("db", rowList.stream().map(String::valueOf).collect(Collectors.toList()));
@@ -38,7 +39,7 @@ public class Test12 {
         }));
 
         AtomicInteger tableCount = new AtomicInteger(0);
-        ExcelUtil.read07BySax(filePath, 3, ((sheetIndex, rowIndex, rowList) -> {
+        ExcelUtil.read07BySax(filePath, 1, ((sheetIndex, rowIndex, rowList) -> {
             tableCount.getAndIncrement();
             if (rowIndex == 0) {
                 headerGroup.put("table", rowList.stream().map(String::valueOf).collect(Collectors.toList()));
@@ -46,7 +47,7 @@ public class Test12 {
         }));
 
         AtomicInteger viewCount = new AtomicInteger(0);
-        ExcelUtil.read07BySax(filePath, 4, ((sheetIndex, rowIndex, rowList) -> {
+        ExcelUtil.read07BySax(filePath, 2, ((sheetIndex, rowIndex, rowList) -> {
             viewCount.getAndIncrement();
             if (rowIndex == 0) {
                 headerGroup.put("view", rowList.stream().map(String::valueOf).collect(Collectors.toList()));
@@ -54,7 +55,7 @@ public class Test12 {
         }));
 
         AtomicInteger columnCount = new AtomicInteger(0);
-        ExcelUtil.read07BySax(filePath, 5, ((sheetIndex, rowIndex, rowList) -> {
+        ExcelUtil.read07BySax(filePath, 3, ((sheetIndex, rowIndex, rowList) -> {
             columnCount.getAndIncrement();
             if (rowIndex == 0) {
                 headerGroup.put("column", rowList.stream().map(String::valueOf).collect(Collectors.toList()));
