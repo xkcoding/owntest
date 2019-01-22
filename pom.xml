@@ -32,6 +32,7 @@
         <modelmapper.version>2.3.1</modelmapper.version>
         <webmagic.version>0.7.3</webmagic.version>
         <oshi.version>3.9.1</oshi.version>
+        <distruptor.version>3.3.7</distruptor.version>
     </properties>
 
     <dependencyManagement>
@@ -108,6 +109,11 @@
                 <groupId>com.github.oshi</groupId>
                 <artifactId>oshi-core</artifactId>
                 <version>${oshi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${distruptor.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
