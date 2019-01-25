@@ -32,7 +32,7 @@
         <modelmapper.version>2.3.1</modelmapper.version>
         <webmagic.version>0.7.3</webmagic.version>
         <oshi.version>3.9.1</oshi.version>
-        <distruptor.version>3.3.7</distruptor.version>
+        <distruptor.version>3.4.2</distruptor.version>
     </properties>
 
     <dependencyManagement>
