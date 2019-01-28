@@ -2,7 +2,7 @@ package com.xkcoding.test.test13;
 
 /**
  * <p>
- * 测试 Disruptor
+ * 测试 Disruptor 单生产者/单消费者模型
  * </p>
  *
  * @package: com.xkcoding.test.test13
