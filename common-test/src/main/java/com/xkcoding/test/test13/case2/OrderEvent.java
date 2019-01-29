@@ -1,4 +1,4 @@
-package com.xkcoding.test.test13;
+package com.xkcoding.test.test13.case2;
 
 import lombok.Data;
 

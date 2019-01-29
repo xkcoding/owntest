@@ -1,8 +1,7 @@
-package com.xkcoding.test.test13;
+package com.xkcoding.test.test13.case2;
 
 import cn.hutool.json.JSONUtil;
 import com.lmax.disruptor.WorkHandler;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * <p>
@@ -17,11 +16,10 @@ import lombok.extern.slf4j.Slf4j;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-@Slf4j
 public class OrderEventHandler implements WorkHandler<OrderEvent> {
 
     @Override
     public void onEvent(OrderEvent event) {
-        log.error("【event】= {}", JSONUtil.toJsonStr(event));
+        System.err.println("【event】= " + JSONUtil.toJsonStr(event));
     }
 }
