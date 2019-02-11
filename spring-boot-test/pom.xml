@@ -23,6 +23,7 @@
         <iexcel.version>0.0.2</iexcel.version>
         <easyexcel.version>1.1.2-beta5</easyexcel.version>
         <easypoi.version>3.3.0</easypoi.version>
+        <activiti.version>5.22.0</activiti.version>
     </properties>
 
     <dependencies>
@@ -99,6 +100,32 @@
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
             <version>${xerces.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- Activiti 启动器 -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter-basic</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+
+        <!-- Activiti 流程图 -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-diagram-rest</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+
+        <!-- Activiti 在线设计 -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-modeler</artifactId>
+            <version>${activiti.version}</version>
         </dependency>
 
     </dependencies>
