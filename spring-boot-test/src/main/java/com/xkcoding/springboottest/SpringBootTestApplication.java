@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {org.activiti.spring.boot.SecurityAutoConfiguration.class, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
 public class SpringBootTestApplication {
 
     public static void main(String[] args) {

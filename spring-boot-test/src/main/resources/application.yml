@@ -5,3 +5,18 @@ server:
 spring:
   main:
     allow-bean-definition-overriding: true
+  activiti:
+    database-schema-update: true
+    job-executor-activate: true
+    history-level: full
+    check-process-definitions: false
+    ext:
+      database-schema-update: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    # spring boot 2.0 启动创建数据表需要开启这个选项
+    initialization-mode: always
