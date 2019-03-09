@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class Test5 {
     public static void main(String[] args) {
-        SimpleDataSource dataSource=new SimpleDataSource("jdbc:mysql://127.0.0.1:3306/spring-boot-demo?useInformationSchema=true", "root", "root");
+        SimpleDataSource dataSource = new SimpleDataSource("jdbc:mysql://127.0.0.1:3306/spring-boot-demo?useInformationSchema=true", "root", "root");
         List<String> tables = MetaUtil.getTables(dataSource);
         System.out.println(tables);
         for (String table : tables) {

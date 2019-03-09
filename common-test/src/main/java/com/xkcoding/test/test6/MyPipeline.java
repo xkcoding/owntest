@@ -20,7 +20,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 public class MyPipeline implements Pipeline {
     /**
      * Process extracted results.
- *
+     *
      * @param resultItems resultItems
      * @param task        task
      */

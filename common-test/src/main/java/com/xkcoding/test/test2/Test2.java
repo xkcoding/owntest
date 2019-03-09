@@ -51,9 +51,9 @@ public class Test2 {
         String fileName = "/Users/yangkai.shen/Desktop/multi-sheet.xlsx";
         FileUtil.del(fileName);
         try (ExcelWriter writer = ExcelUtil.getBigWriter(fileName)) {
-            writer.addHeaderAlias("desc","desc");
-            writer.addHeaderAlias("name","name");
-            writer.addHeaderAlias("age","age");
+            writer.addHeaderAlias("desc", "desc");
+            writer.addHeaderAlias("name", "name");
+            writer.addHeaderAlias("age", "age");
             for (int i = 0; i < 10; i++) {
                 List<User> users = Lists.newArrayList();
                 int finalI = i;
