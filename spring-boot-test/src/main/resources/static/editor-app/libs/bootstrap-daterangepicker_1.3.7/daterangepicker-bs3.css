@@ -28,11 +28,11 @@
     text-align: left;
 }
 
-.daterangepicker .ranges .range_inputs>div {
+.daterangepicker .ranges .range_inputs > div {
     float: left;
 }
 
-.daterangepicker .ranges .range_inputs>div:nth-child(2) {
+.daterangepicker .ranges .range_inputs > div:nth-child(2) {
     padding-left: 11px;
 }
 

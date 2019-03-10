@@ -16,7 +16,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-angular.module('activitiModeler').controller('ActivitiSignalRefCtrl', [ '$scope', function($scope) {
+angular.module('activitiModeler').controller('ActivitiSignalRefCtrl', ['$scope', function ($scope) {
 
     // Find the parent shape on which the signal definitions are defined
     var signalDefinitionsProperty = undefined;
@@ -41,7 +41,7 @@ angular.module('activitiModeler').controller('ActivitiSignalRefCtrl', [ '$scope'
     $scope.signalDefinitions = signalDefinitionsProperty;
 
 
-    $scope.signalChanged = function() {
-    	$scope.updatePropertyInModel($scope.property);
+    $scope.signalChanged = function () {
+        $scope.updatePropertyInModel($scope.property);
     };
 }]);

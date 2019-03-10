@@ -34,7 +34,7 @@ public class EventBusService implements InitializingBean {
         this.eventListener = eventListener;
     }
 
-    public void postEvent(){
+    public void postEvent() {
         eventBus.post(new TestEvent(1L));
         log.info("event emit....");
     }

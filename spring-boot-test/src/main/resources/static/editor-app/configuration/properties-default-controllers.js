@@ -21,33 +21,33 @@
  * String controller
  */
 
-var KisBpmStringPropertyCtrl = [ '$scope', function ($scope) {
+var KisBpmStringPropertyCtrl = ['$scope', function ($scope) {
 
-	$scope.shapeId = $scope.selectedShape.id;
-	$scope.valueFlushed = false;
+    $scope.shapeId = $scope.selectedShape.id;
+    $scope.valueFlushed = false;
     /** Handler called when input field is blurred */
-    $scope.inputBlurred = function() {
-    	$scope.valueFlushed = true;
-    	if ($scope.property.value) {
-    		$scope.property.value = $scope.property.value.replace(/(<([^>]+)>)/ig,"");
-    	}
+    $scope.inputBlurred = function () {
+        $scope.valueFlushed = true;
+        if ($scope.property.value) {
+            $scope.property.value = $scope.property.value.replace(/(<([^>]+)>)/ig, "");
+        }
         $scope.updatePropertyInModel($scope.property);
     };
 
-    $scope.enterPressed = function(keyEvent) {
-    	if (keyEvent && keyEvent.which === 13) {
-    		keyEvent.preventDefault();
-	        $scope.inputBlurred(); // we want to do the same as if the user would blur the input field
-    	}
+    $scope.enterPressed = function (keyEvent) {
+        if (keyEvent && keyEvent.which === 13) {
+            keyEvent.preventDefault();
+            $scope.inputBlurred(); // we want to do the same as if the user would blur the input field
+        }
     };
-    
+
     $scope.$on('$destroy', function controllerDestroyed() {
-    	if(!$scope.valueFlushed) {
-    		if ($scope.property.value) {
-        		$scope.property.value = $scope.property.value.replace(/(<([^>]+)>)/ig,"");
-        	}
-    		$scope.updatePropertyInModel($scope.property, $scope.shapeId);
-    	}
+        if (!$scope.valueFlushed) {
+            if ($scope.property.value) {
+                $scope.property.value = $scope.property.value.replace(/(<([^>]+)>)/ig, "");
+            }
+            $scope.updatePropertyInModel($scope.property, $scope.shapeId);
+        }
     });
 
 }];
@@ -58,7 +58,7 @@ var KisBpmStringPropertyCtrl = [ '$scope', function ($scope) {
 
 var KisBpmBooleanPropertyCtrl = ['$scope', function ($scope) {
 
-    $scope.changeValue = function() {
+    $scope.changeValue = function () {
         if ($scope.property.key === 'oryx-defaultflow' && $scope.property.value) {
             var selectedShape = $scope.selectedShape;
             if (selectedShape) {
@@ -90,10 +90,10 @@ var KisBpmBooleanPropertyCtrl = ['$scope', function ($scope) {
  * Text controller
  */
 
-var KisBpmTextPropertyCtrl = [ '$scope', '$modal', function($scope, $modal) {
+var KisBpmTextPropertyCtrl = ['$scope', '$modal', function ($scope, $modal) {
 
     var opts = {
-        template:  'editor-app/configuration/properties/text-popup.html?version=' + Date.now(),
+        template: 'editor-app/configuration/properties/text-popup.html?version=' + Date.now(),
         scope: $scope
     };
 
@@ -101,14 +101,14 @@ var KisBpmTextPropertyCtrl = [ '$scope', '$modal', function($scope, $modal) {
     $modal(opts);
 }];
 
-var KisBpmTextPropertyPopupCtrl = ['$scope', function($scope) {
-    
-    $scope.save = function() {
+var KisBpmTextPropertyPopupCtrl = ['$scope', function ($scope) {
+
+    $scope.save = function () {
         $scope.updatePropertyInModel($scope.property);
         $scope.close();
     };
 
-    $scope.close = function() {
+    $scope.close = function () {
         $scope.property.mode = 'read';
         $scope.$hide();
     };

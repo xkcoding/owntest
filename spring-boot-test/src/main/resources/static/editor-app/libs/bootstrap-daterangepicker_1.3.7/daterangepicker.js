@@ -95,7 +95,7 @@
 
         constructor: DateRangePicker,
 
-        setOptions: function(options, callback) {
+        setOptions: function (options, callback) {
 
             this.startDate = moment().startOf('day');
             this.endDate = moment().endOf('day');
@@ -134,7 +134,8 @@
                 firstDay: 0
             };
 
-            this.cb = function () { };
+            this.cb = function () {
+            };
 
             if (typeof options.format === 'string')
                 this.format = options.format;
@@ -368,7 +369,7 @@
 
         },
 
-        setStartDate: function(startDate) {
+        setStartDate: function (startDate) {
             if (typeof startDate === 'string')
                 this.startDate = moment(startDate, this.format);
 
@@ -384,7 +385,7 @@
             this.updateCalendars();
         },
 
-        setEndDate: function(endDate) {
+        setEndDate: function (endDate) {
             if (typeof endDate === 'string')
                 this.endDate = moment(endDate, this.format);
 
@@ -425,7 +426,7 @@
                 start = null,
                 end = null;
 
-            if(dateString.length === 2) {
+            if (dateString.length === 2) {
                 start = moment(dateString[0], this.format);
                 end = moment(dateString[1], this.format);
             }
@@ -455,7 +456,7 @@
         },
 
         move: function () {
-            var parentOffset = { top: 0, left: 0 };
+            var parentOffset = {top: 0, left: 0};
             if (!this.parentEl.is('body')) {
                 parentOffset = {
                     top: this.parentEl.offset().top - this.parentEl.scrollTop(),
@@ -504,7 +505,9 @@
             this.move();
 
             // Create a click proxy that is private to this instance of datepicker, for unbinding
-            this._outsideClickProxy = $.proxy(function (e) { this.outsideClick(e); }, this);
+            this._outsideClickProxy = $.proxy(function (e) {
+                this.outsideClick(e);
+            }, this);
             // Bind global datepicker mousedown for hiding and
             $(document)
                 .on('mousedown.daterangepicker', this._outsideClickProxy)
@@ -524,7 +527,7 @@
                 target.closest(this.element).length ||
                 target.closest(this.container).length ||
                 target.closest('.calendar-date').length
-                ) return;
+            ) return;
             this.hide();
         },
 
@@ -558,16 +561,16 @@
             }
         },
 
-        showCalendars: function() {
+        showCalendars: function () {
             this.container.addClass('show-calendar');
             this.move();
         },
 
-        hideCalendars: function() {
+        hideCalendars: function () {
             this.container.removeClass('show-calendar');
         },
 
-        updateInputText: function() {
+        updateInputText: function () {
             if (this.element.is('input') && !this.singleDatePicker) {
                 this.element.val(this.startDate.format(this.format) + this.separator + this.endDate.format(this.format));
             } else if (this.element.is('input')) {
@@ -716,17 +719,17 @@
         updateMonthYear: function (e) {
             var isLeft = $(e.target).closest('.calendar').hasClass('left'),
                 leftOrRight = isLeft ? 'left' : 'right',
-                cal = this.container.find('.calendar.'+leftOrRight);
+                cal = this.container.find('.calendar.' + leftOrRight);
 
             // Month must be Number for new moment versions
             var month = parseInt(cal.find('.monthselect').val(), 10);
             var year = cal.find('.yearselect').val();
 
-            this[leftOrRight+'Calendar'].month.month(month).year(year);
+            this[leftOrRight + 'Calendar'].month.month(month).year(year);
             this.updateCalendars();
         },
 
-        updateTime: function(e) {
+        updateTime: function (e) {
 
             var cal = $(e.target).closest('.calendar'),
                 isLeft = cal.hasClass('left');
@@ -929,8 +932,12 @@
                         }
                     } else if (calendar[row][col] >= this.startDate && calendar[row][col] <= this.endDate) {
                         cname += ' in-range ';
-                        if (calendar[row][col].isSame(this.startDate)) { cname += ' start-date '; }
-                        if (calendar[row][col].isSame(this.endDate)) { cname += ' end-date '; }
+                        if (calendar[row][col].isSame(this.startDate)) {
+                            cname += ' start-date ';
+                        }
+                        if (calendar[row][col].isSame(this.endDate)) {
+                            cname += ' end-date ';
+                        }
                     }
 
                     var title = 'r' + row + 'c' + col;
@@ -1003,7 +1010,7 @@
 
         },
 
-        remove: function() {
+        remove: function () {
 
             this.container.remove();
             this.element.off('.daterangepicker');

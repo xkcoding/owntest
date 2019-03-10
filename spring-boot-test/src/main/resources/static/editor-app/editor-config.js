@@ -21,12 +21,12 @@
 var KISBPM = KISBPM || {};
 
 KISBPM.CONFIG = {
-		'showRemovedProperties' : false
+    'showRemovedProperties': false
 };
 
 KISBPM.HEADER_CONFIG = {
-		'showAppTitle' : true,
-		'showHeaderMenu' : true,
-		'showMainNavigation' : true,
-		'showPageHeader' : true
+    'showAppTitle': true,
+    'showHeaderMenu': true,
+    'showMainNavigation': true,
+    'showPageHeader': true
 };

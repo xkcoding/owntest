@@ -20,15 +20,15 @@ var KISBPM = KISBPM || {};
 
 KISBPM.URL = {
 
-    getModel: function(modelId) {
+    getModel: function (modelId) {
         return ACTIVITI.CONFIG.contextRoot + '/model/' + modelId + '/json';
     },
 
-    getStencilSet: function() {
+    getStencilSet: function () {
         return ACTIVITI.CONFIG.contextRoot + '/editor/stencilset?version=' + Date.now();
     },
 
-    putModel: function(modelId) {
+    putModel: function (modelId) {
         return ACTIVITI.CONFIG.contextRoot + '/model/' + modelId + '/save';
     }
 };
