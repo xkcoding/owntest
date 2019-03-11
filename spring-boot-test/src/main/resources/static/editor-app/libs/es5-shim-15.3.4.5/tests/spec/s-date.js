@@ -1,5 +1,5 @@
 describe('Date', function () {
-    
+
     describe('now', function () {
         it('should be the current time', function () {
             expect(Date.now() === new Date().getTime()).toBe(true);
@@ -20,7 +20,7 @@ describe('Date', function () {
         });
 
         it('should work', function () {
-                                                                                  //Chrome 19     Opera 12      Firefox 11    IE 9          Safari 5.1.1
+            //Chrome 19     Opera 12      Firefox 11    IE 9          Safari 5.1.1
             expect(Date.parse("2012-11-31T23:59:59.000Z")).toBeFalsy();           //1354406399000 NaN           NaN           1354406399000 NaN
             expect(Date.parse("2012-12-31T23:59:59.000Z")).toBe(1356998399000);   //1356998399000 1356998399000 1356998399000 1356998399000 1356998399000
             expect(Date.parse("2012-12-31T23:59:60.000Z")).toBeFalsy();           //NaN           NaN           NaN           NaN           1356998400000
@@ -52,7 +52,7 @@ describe('Date', function () {
 
             // https://github.com/kriskowal/es5-shim/issues/80 Safari bug with leap day
             expect(Date.parse("2034-03-01T00:00:00.000Z") -
-                        Date.parse("2034-02-27T23:59:59.999Z")).toBe(86400001);   //86400001      86400001       86400001       86400001      1
+                Date.parse("2034-02-27T23:59:59.999Z")).toBe(86400001);   //86400001      86400001       86400001       86400001      1
 
             // Time Zone Offset
             expect(Date.parse("2012-01-29T12:00:00.000+01:00")).toBe(132783480e4);//132783480e4 132783480e4  132783480e4  132783480e4     132783480e4
@@ -75,7 +75,7 @@ describe('Date', function () {
             expect(Date.parse('1970-01-01T00:00:00')).toBe(tzOffset);             //tzOffset    0            0            0               NaN
         });
 
-        it("should be able to coerce to a number", function(){
+        it("should be able to coerce to a number", function () {
             var actual = Number(new Date(1970, 0));
             var expected = parseInt(actual, 10);
             expect(actual).toBeDefined();
@@ -85,12 +85,12 @@ describe('Date', function () {
 
     });
 
-    describe("toString", function(){
+    describe("toString", function () {
         var actual = (new Date(1970, 0)).toString();
-        beforeEach(function(){
+        beforeEach(function () {
             actual = (new Date(1970, 0)).toString();
         });
-        it("should show correct date info for "+actual, function(){
+        it("should show correct date info for " + actual, function () {
             expect(actual).toMatch(/1970/);
             expect(actual).toMatch(/jan/i);
             expect(actual).toMatch(/thu/i);
@@ -98,19 +98,19 @@ describe('Date', function () {
         });
     });
 
-    describe("valueOf", function(){
+    describe("valueOf", function () {
         var actual = (new Date(1970, 0));
-        beforeEach(function(){
+        beforeEach(function () {
             actual = (new Date(1970, 0)).valueOf();
         });
-        it("should give an int value", function(){
+        it("should give an int value", function () {
             expect(parseInt(actual, 10)).toBeTruthy();
         });
     });
 
     describe("toISOString", function () {
         // TODO: write the rest of the test.
-       
+
         it('should support extended years', function () {
             expect(new Date(-62198755200000).toISOString().indexOf('-000001-01-01')).toBe(0);
             expect(new Date(8.64e15).toISOString().indexOf('+275760-09-13')).toBe(0);
@@ -127,26 +127,27 @@ describe('Date', function () {
 
         // Opera 11.6x/12 bug
         it('should call toISOString', function () {
-          var date = new Date(0);
-          date.toISOString = function () {
-            return 1;
-          };
-          expect(date.toJSON()).toBe(1);
+            var date = new Date(0);
+            date.toISOString = function () {
+                return 1;
+            };
+            expect(date.toJSON()).toBe(1);
         });
 
         it('should return null for not finite dates', function () {
-          var date = new Date(NaN),
-              json;
-          try {
-            json = date.toJSON();
-          } catch (e) {}
-          expect(json).toBe(null);
+            var date = new Date(NaN),
+                json;
+            try {
+                json = date.toJSON();
+            } catch (e) {
+            }
+            expect(json).toBe(null);
         });
 
         it('should return the isoString when stringified', function () {
             var date = new Date();
             expect(JSON.stringify(date.toISOString())).toBe(JSON.stringify(date));
-        }) 
+        })
     });
 
 });

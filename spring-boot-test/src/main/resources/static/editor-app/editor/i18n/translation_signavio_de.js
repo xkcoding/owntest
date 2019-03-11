@@ -1,8 +1,8 @@
 Ext.PagingToolbar.prototype.firstText = "Erste Seite";
 Ext.PagingToolbar.prototype.prevText = "Vorherige Seite";
 Ext.PagingToolbar.prototype.nextText = "Nächste Seite";
-Ext.PagingToolbar.prototype.lastText  = "Letzte Seite";
-	
+Ext.PagingToolbar.prototype.lastText = "Letzte Seite";
+
 
 ORYX.I18N.PropertyWindow.dateFormat = "d.m.y";
 
@@ -41,16 +41,24 @@ ORYX.I18N.Save.exception = "Beim Speichern Ihres Diagramms sind einige Probleme 
 ORYX.I18N.Save.retrieveData = "Bitte warten, Daten werden geladen";
 
 /** New Language Properties: 10.6.09*/
-if(!ORYX.I18N.ShapeMenuPlugin) ORYX.I18N.ShapeMenuPlugin = {};
+if (!ORYX.I18N.ShapeMenuPlugin) ORYX.I18N.ShapeMenuPlugin = {};
 ORYX.I18N.ShapeMenuPlugin.morphMsg = "Umwandeln";
 ORYX.I18N.ShapeMenuPlugin.morphWarningTitleMsg = "Umwandeln";
 ORYX.I18N.ShapeMenuPlugin.morphWarningMsg = "Einige Kindelemente können nicht im neuen Element enthalten sein.<br/>Möchten Sie dennoch das Element umwandeln?";
 
-if (!Signavio) { var Signavio = {}; }
-if (!Signavio.I18N) { Signavio.I18N = {} }
-if (!Signavio.I18N.Editor) { Signavio.I18N.Editor = {} }
+if (!Signavio) {
+    var Signavio = {};
+}
+if (!Signavio.I18N) {
+    Signavio.I18N = {}
+}
+if (!Signavio.I18N.Editor) {
+    Signavio.I18N.Editor = {}
+}
 
-if (!Signavio.I18N.Editor.Linking) { Signavio.I18N.Editor.Linking = {} }
+if (!Signavio.I18N.Editor.Linking) {
+    Signavio.I18N.Editor.Linking = {}
+}
 Signavio.I18N.Editor.Linking.CreateDiagram = "Neues Diagramm erstellen:";
 Signavio.I18N.Editor.Linking.UseDiagram = "Vorhandenes Diagramm verwenden";
 Signavio.I18N.Editor.Linking.UseLink = "Web-Link verwenden";
@@ -69,19 +77,21 @@ Signavio.I18N.Editor.Linking.OpenLink = "Öffnen";
 Signavio.I18N.Editor.Linking.BrokenLink = "Der Link ist nicht verfügbar!";
 Signavio.I18N.Editor.Linking.PreviewTitle = "Vorschau";
 
-if(!ORYX.I18N.PropertyWindow) ORYX.I18N.PropertyWindow = {};
+if (!ORYX.I18N.PropertyWindow) ORYX.I18N.PropertyWindow = {};
 ORYX.I18N.PropertyWindow.oftenUsed = "Hauptattribute";
 ORYX.I18N.PropertyWindow.moreProps = "Weitere Attribute";
 ORYX.I18N.PropertyWindow.characteristicNr = "Kennzahlen";
 ORYX.I18N.PropertyWindow.meta = "Eigene Attribute";
 
-if(!ORYX.I18N.PropertyWindow.Category){ORYX.I18N.PropertyWindow.Category = {}}
+if (!ORYX.I18N.PropertyWindow.Category) {
+    ORYX.I18N.PropertyWindow.Category = {}
+}
 ORYX.I18N.PropertyWindow.Category.popular = "Hauptattribute";
 ORYX.I18N.PropertyWindow.Category.characteristicnr = "Kennzahlen";
 ORYX.I18N.PropertyWindow.Category.others = "Weitere Attribute";
 ORYX.I18N.PropertyWindow.Category.meta = "Eigene Attribute";
 
-if(!ORYX.I18N.PropertyWindow.ListView) ORYX.I18N.PropertyWindow.ListView = {};
+if (!ORYX.I18N.PropertyWindow.ListView) ORYX.I18N.PropertyWindow.ListView = {};
 ORYX.I18N.PropertyWindow.ListView.title = "Attribut: ";
 ORYX.I18N.PropertyWindow.ListView.dataViewLabel = "Bereits vorhandene Einträge";
 ORYX.I18N.PropertyWindow.ListView.dataViewEmptyText = "Es sind noch keine Einträge vorhanden.";
@@ -90,17 +100,21 @@ ORYX.I18N.PropertyWindow.ListView.buttonAdd = "Hinzufügen";
 ORYX.I18N.PropertyWindow.ListView.save = "Speichern";
 ORYX.I18N.PropertyWindow.ListView.cancel = "Abbrachen";
 
-if(!Signavio.I18N.Buttons) Signavio.I18N.Buttons = {};
-Signavio.I18N.Buttons.save		= "Speichern";
-Signavio.I18N.Buttons.cancel 	= "Abbrechen";
-Signavio.I18N.Buttons.remove	= "Entfernen";
+if (!Signavio.I18N.Buttons) Signavio.I18N.Buttons = {};
+Signavio.I18N.Buttons.save = "Speichern";
+Signavio.I18N.Buttons.cancel = "Abbrechen";
+Signavio.I18N.Buttons.remove = "Entfernen";
 
-if(!Signavio.I18N.btn) {Signavio.I18N.btn = {};}
+if (!Signavio.I18N.btn) {
+    Signavio.I18N.btn = {};
+}
 Signavio.I18N.btn.btnEdit = "Editieren";
 Signavio.I18N.btn.btnRemove = "Löschen";
 Signavio.I18N.btn.moveUp = "Nach oben";
 Signavio.I18N.btn.moveDown = "Nach unten";
 
-if(!Signavio.I18N.field) {Signavio.I18N.field = {};}
+if (!Signavio.I18N.field) {
+    Signavio.I18N.field = {};
+}
 Signavio.I18N.field.Url = "URL";
 Signavio.I18N.field.UrlLabel = "Label";
