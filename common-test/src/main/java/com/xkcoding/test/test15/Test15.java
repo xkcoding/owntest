@@ -31,7 +31,7 @@ public class Test15 {
         DataSource dataSource = initDatasource();
         tables(dataSource);
         tables(dataSource, "sys_user", "sys_token");
-        columns(dataSource,"sys_user");
+        columns(dataSource, "sys_user");
     }
 
     private static DataSource initDatasource() {

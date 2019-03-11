@@ -21,17 +21,18 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadTaskManager {
 
-	private final static ThreadTaskManager INSTANCE = new ThreadTaskManager();
-	private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(20, new BasicThreadFactory.Builder().namingPattern("Async-Thread-%d").build());
+    private final static ThreadTaskManager INSTANCE = new ThreadTaskManager();
+    private ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(20, new BasicThreadFactory.Builder().namingPattern("Async-Thread-%d")
+            .build());
 
-	private ThreadTaskManager() {
-	}
+    private ThreadTaskManager() {
+    }
 
-	public static ThreadTaskManager me() {
-		return INSTANCE;
-	}
+    public static ThreadTaskManager me() {
+        return INSTANCE;
+    }
 
-	public void executeTask(TimerTask task) {
-		executor.schedule(task, 2000, TimeUnit.MILLISECONDS);
-	}
+    public void executeTask(TimerTask task) {
+        executor.schedule(task, 2000, TimeUnit.MILLISECONDS);
+    }
 }

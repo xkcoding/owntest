@@ -42,7 +42,7 @@ public class Test13 {
         disruptor.start();
 
         RingBuffer<OrderEvent> ringBuffer = disruptor.getRingBuffer();
-       
+
         for (int i = 0; i < 10000; i++) {
             ringBuffer.publishEvent((event, sequence) -> {
                 event.setId(SNOWFLAKE.nextId());

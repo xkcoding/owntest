@@ -165,12 +165,9 @@ public class Server {
      */
     private void setJvmInfo() throws UnknownHostException {
         Properties props = System.getProperties();
-        jvm.setTotal(Runtime.getRuntime()
-                .totalMemory());
-        jvm.setMax(Runtime.getRuntime()
-                .maxMemory());
-        jvm.setFree(Runtime.getRuntime()
-                .freeMemory());
+        jvm.setTotal(Runtime.getRuntime().totalMemory());
+        jvm.setMax(Runtime.getRuntime().maxMemory());
+        jvm.setFree(Runtime.getRuntime().freeMemory());
         jvm.setVersion(props.getProperty("java.version"));
         jvm.setHome(props.getProperty("java.home"));
     }

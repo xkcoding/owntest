@@ -28,10 +28,7 @@ public class Test9 {
 
         System.out.println("重命名开始");
         File[] ls = FileUtil.ls(root);
-        List<File> fileList = Arrays.stream(ls)
-                .filter(FileUtil::isDirectory)
-                .sorted()
-                .collect(Collectors.toList());
+        List<File> fileList = Arrays.stream(ls).filter(FileUtil::isDirectory).sorted().collect(Collectors.toList());
         for (File file : fileList) {
             String dirName = file.getName();
             String fileName = StrUtil.subAfter(dirName, prefix, false);
