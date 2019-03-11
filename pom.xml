@@ -10,6 +10,7 @@
     <modules>
         <module>common-test</module>
         <module>spring-boot-test</module>
+        <module>scaffold-demo-test</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -21,10 +22,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <test.version>1.0-SNAPSHOT</test.version>
-        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+        <spring.boot.version>2.1.3.RELEASE</spring.boot.version>
         <lombok.version>1.16.22</lombok.version>
         <mysql.version>8.0.12</mysql.version>
-        <hutool.version>4.4.2</hutool.version>
+        <hutool.version>4.5.1</hutool.version>
         <guava.version>27.0-jre</guava.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <poi.version>4.0.1</poi.version>
@@ -33,6 +34,7 @@
         <webmagic.version>0.7.3</webmagic.version>
         <oshi.version>3.9.1</oshi.version>
         <distruptor.version>3.4.2</distruptor.version>
+        <scaffold.version>1.0.0</scaffold.version>
     </properties>
 
     <dependencyManagement>
@@ -41,6 +43,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -115,6 +124,36 @@
                 <artifactId>disruptor</artifactId>
                 <version>${distruptor.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.xkcoding</groupId>
+                <artifactId>scaffold-launcher</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xkcoding</groupId>
+                <artifactId>scaffold-common</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xkcoding</groupId>
+                <artifactId>scaffold-test</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xkcoding</groupId>
+                <artifactId>scaffold-log</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xkcoding</groupId>
+                <artifactId>scaffold-swagger</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xkcoding</groupId>
+                <artifactId>scaffold-web</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -132,6 +171,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
     <build>

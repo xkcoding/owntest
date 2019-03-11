@@ -114,13 +114,6 @@
             <version>${activiti.version}</version>
         </dependency>
 
-        <!-- Activiti 流程图 -->
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-diagram-rest</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-
         <!-- Activiti 在线设计 -->
         <dependency>
             <groupId>org.activiti</groupId>

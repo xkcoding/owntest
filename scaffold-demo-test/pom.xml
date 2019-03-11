@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>own-test</artifactId>
+        <groupId>com.xkcoding</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>scaffold-demo-test</artifactId>
+
+    <name>scaffold-demo-test</name>
+
+    <dependencies>
+        <!--demo01-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework.boot</groupId>-->
+                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-undertow</artifactId>-->
+        <!--</dependency>-->
+
+        <!--测试 scaffold-launcher-->
+        <dependency>
+            <groupId>com.xkcoding</groupId>
+            <artifactId>scaffold-launcher</artifactId>
+        </dependency>
+
+        <!--测试 scaffold-common-->
+        <dependency>
+            <groupId>com.xkcoding</groupId>
+            <artifactId>scaffold-common</artifactId>
+        </dependency>
+
+        <!--启用 bootstrap.yml-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+        </dependency>
+
+        <!--测试 scaffold-log-->
+        <dependency>
+            <groupId>com.xkcoding</groupId>
+            <artifactId>scaffold-log</artifactId>
+        </dependency>
+
+        <!--测试 scaffold-test-->
+        <dependency>
+            <groupId>com.xkcoding</groupId>
+            <artifactId>scaffold-test</artifactId>
+        </dependency>
+
+        <!--测试 scaffold-swagger-->
+        <dependency>
+            <groupId>com.xkcoding</groupId>
+            <artifactId>scaffold-swagger</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
