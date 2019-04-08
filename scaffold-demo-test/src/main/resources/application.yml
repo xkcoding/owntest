@@ -1,2 +1,77 @@
+scaffold:
+  prop:
+    author: xkcoding
+  code:
+    enabled: true
+  codegen:
+    author: author111
+    base-package-name: com.package11
+    module-name:  demo
+    table-prefix: t_
+  notification:
+    dingtalk:
+      webhook: https://oapi.dingtalk.com/robot/send?access_token=65577928e22e8417fa7740ed86e1cc9980c933ab28207bb540e2d22ed42cda0b
+      enabled: true
+    email:
+      enabled: true
+    aliyun:
+      enabled: true
+      access-key: heU9MpnYWyUmvJFY
+      secret-key: InZ1JBqn0RnUUD2ziLVAe1OtmQaP33
+      channels:
+        article_notification: SMS_160576086
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-boot-demo
+    username: root
+    password: root
+  redis:
+    host: localhost
+    # 连接超时时间（记得添加单位，Duration）
+    timeout: 10000ms
+    # Redis默认情况下有16个分片，这里配置具体使用的分片
+    # database: 0
+    lettuce:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1ms
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 8
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+  cache:
+    # 一般来说是不用配置的，Spring Cache 会根据依赖的包自行装配
+    type: redis
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 237497819@qq.com
+    password: izbirtnpqsancade
+    protocol: smtp
+    test-connection: true
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.enable: true
+  main:
+    allow-bean-definition-overriding: true
+#swagger配置信息
+swagger:
+  title: Demo 接口文档系统
+  description: Demo 接口文档系统
+  version: 1.0.0
+  license: Powered By xkcoding
+  base-package: com.example.demo
+  contact:
+    name: xkcoding
+    email: xkcoding@163.com
+    url: https://xkcoding.com
 server:
+  servlet:
+    context-path: /demo
   port: 9090

@@ -1,7 +1,7 @@
 package com.xkcoding.demo;
 
-import com.xkcoding.test.ScaffoldBaseTest;
-import com.xkcoding.test.ScaffoldTest;
+import com.xkcoding.scaffold.test.ScaffoldBaseTest;
+import com.xkcoding.scaffold.test.ScaffoldTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,12 +20,12 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @modified: yangkai.shen
  */
 @SpringBootTest
-@ScaffoldTest(appName = "demo-test",profile = "test")
+@ScaffoldTest(appName = "demo-test", profile = "test")
 @Slf4j
 public class DemoTest extends ScaffoldBaseTest {
 
     @Test
-    public void test01(){
+    public void test01() {
         log.info("1111111111");
         log.error("1111111111");
     }

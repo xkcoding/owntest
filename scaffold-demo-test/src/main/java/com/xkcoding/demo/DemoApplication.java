@@ -1,6 +1,6 @@
 package com.xkcoding.demo;
 
-import com.xkcoding.launcher.ScafflodApplication;
+import com.xkcoding.scaffold.launcher.ScaffoldApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
@@ -19,6 +19,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
     public static void main(String[] args) {
-        ScafflodApplication.run("demo", DemoApplication.class, args);
+        ScaffoldApplication.run("demo", DemoApplication.class, args);
     }
 }
