@@ -54,7 +54,7 @@ public class DemoController {
     @GetMapping("/verify/math/{code}")
     @ApiOperation(value = "验证数学验证码", notes = "验证数学验证码")
     @ApiImplicitParams({@ApiImplicitParam(name = "code", value = "验证码", required = true)})
-    public R<Boolean> verifyMathCode(HttpServletResponse response, @PathVariable String code, @RequestBody User user) {
+    public R<Boolean> verifyMathCode(HttpServletResponse response, @PathVariable String code) {
         boolean flag = scaffoldCode.validateMath(response, code);
         return R.status(flag, "验证码错误");
     }

@@ -2,86 +2,87 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>own-test</artifactId>
-        <groupId>com.xkcoding</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>own-test</artifactId>
+    <groupId>com.xkcoding</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>scaffold-demo-test</artifactId>
+  <artifactId>scaffold-demo-test</artifactId>
+  <version>${test.version}</version>
 
-    <name>scaffold-demo-test</name>
+  <name>scaffold-demo-test</name>
 
-    <dependencies>
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-launcher</artifactId>
-      </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-launcher</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-common</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-common</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-log</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-log</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-test</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-test</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-swagger</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-swagger</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-web</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-web</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-code</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-code</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-notification</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-notification</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>com.xkcoding</groupId>
-        <artifactId>scaffold-codegen</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>com.xkcoding</groupId>
+      <artifactId>scaffold-codegen</artifactId>
+    </dependency>
 
-      <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-      </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
 
-      <dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <!-- 对象池，使用redis时必须引入 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-redis</artifactId>
-      </dependency>
-      <!-- 对象池，使用redis时必须引入 -->
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-pool2</artifactId>
-      </dependency>
-
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

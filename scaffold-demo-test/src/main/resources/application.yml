@@ -23,7 +23,7 @@ scaffold:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring-boot-demo
+    url: jdbc:mysql://localhost:3306/spring-boot-demo?useSSL=false
     username: root
     password: root
   redis:
@@ -72,6 +72,4 @@ swagger:
     email: xkcoding@163.com
     url: https://xkcoding.com
 server:
-  servlet:
-    context-path: /demo
   port: 9090
