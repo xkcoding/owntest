@@ -61,7 +61,7 @@ public class Test24 {
         int ringBufferSize = 1024;
 
         // 创建 disruptor，需要事件工厂、RingBuffer大小、线程池
-        Disruptor<ExportEvent> disruptor = new Disruptor<>(factory, ringBufferSize, DaemonThreadFactory.INSTANCE, ProducerType.MULTI, new YieldingWaitStrategy());
+        Disruptor<ExportEvent> disruptor = new Disruptor<>(factory, ringBufferSize, ThreadUtil.newNamedThreadFactory("disruptor-", new ThreadGroup("TEST"), false), ProducerType.MULTI, new YieldingWaitStrategy());
 
         // 模拟10个线程
         int threadNum = 10;
