@@ -62,7 +62,10 @@ public class Test22 {
         RingBuffer<ExportEvent> ringBuffer = disruptor.getRingBuffer();
         // 设置生产者
         ExportEventPublisher publisher = new ExportEventPublisher(ringBuffer);
-        File file = FileUtil.touch("/Users/yangkai.shen/Desktop/disruptor-multi.txt");
+
+        String filePath = "/Users/yangkai.shen/Desktop/disruptor-multi.txt";
+        FileUtil.del(filePath);
+        File file = FileUtil.touch(filePath);
 
         List<ExportThread> threadList = Lists.newArrayList();
         for (int i = 0; i < threadNum; i++) {
@@ -75,6 +78,9 @@ public class Test22 {
         countDownLatch.await();
         long interval = timer.intervalMs();
         log.info("【总耗时】{} 毫秒", interval);
+
+        // 停止disruptor
+        disruptor.shutdown();
     }
 }
 
