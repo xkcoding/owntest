@@ -149,6 +149,9 @@ public class Test24 {
         countDownLatch.await();
         long interval = timer.intervalSecond();
         log.info("【总耗时】{} 秒", interval);
+
+        // 停止disruptor
+        disruptor.shutdown();
     }
 }
 
