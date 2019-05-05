@@ -59,7 +59,10 @@ public class Test23 {
         RingBuffer<ExportEvent> ringBuffer = disruptor.getRingBuffer();
         // 设置生产者
         ExportEventPublisher publisher = new ExportEventPublisher(ringBuffer);
-        File file = FileUtil.touch("/Users/yangkai.shen/Desktop/disruptor-single.txt");
+
+        String filePath = "/Users/yangkai.shen/Desktop/disruptor-single.txt";
+        FileUtil.del(filePath);
+        File file = FileUtil.touch(filePath);
 
         TimeInterval timer = DateUtil.timer();
         timer.start();
@@ -75,6 +78,9 @@ public class Test23 {
         countDownLatch.await();
         long interval = timer.intervalMs();
         log.info("【总耗时】{} 毫秒", interval);
+
+        // 停止disruptor
+        disruptor.shutdown();
     }
 }
 
