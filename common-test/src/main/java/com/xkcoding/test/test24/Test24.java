@@ -10,7 +10,6 @@ import com.google.common.collect.Lists;
 import com.lmax.disruptor.*;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
-import com.lmax.disruptor.util.DaemonThreadFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,60 +57,80 @@ public class Test24 {
         ExportEventFactory factory = new ExportEventFactory();
 
         // 声明RingBuffer大小，必须为 2 的 n 次方
-        int ringBufferSize = 1024;
+        int ringBufferSize = 1024 * 1024;
 
         // 创建 disruptor，需要事件工厂、RingBuffer大小、线程池
-        Disruptor<ExportEvent> disruptor = new Disruptor<>(factory, ringBufferSize, ThreadUtil.newNamedThreadFactory("disruptor-", new ThreadGroup("TEST"), false), ProducerType.MULTI, new YieldingWaitStrategy());
+        Disruptor<ExportEvent> disruptor = new Disruptor<>(factory, ringBufferSize, ThreadUtil.newNamedThreadFactory("disruptor-", false), ProducerType.MULTI, new YieldingWaitStrategy());
 
         // 模拟10个线程
-        int threadNum = 10;
+        int threadNum = 1024;
         CountDownLatch countDownLatch = new CountDownLatch(threadNum);
 
         // 设置消费者
-        EventHandler<ExportEvent> processData1 = (event, sequence, endOfBatch) -> {
-            // 延迟
-            int second = RandomUtil.randomInt(1, 3);
-            TimeUnit.SECONDS.sleep(second);
-            log.debug("【{}获取第一步数据】耗时：{} 秒", event.getName(), second);
+        boolean needSleep = false;
+        EventHandler<ExportEvent> processData1 = new SleepExportEventHandler(needSleep) {
+            @Override
+            protected void processSleep(ExportEvent event) {
+                simulateSleep(event.getName(), "处理第一步数据", RandomUtil.randomInt(1, 3));
+            }
 
-            event.setData1("data1");
-            log.error("【{}处理第一步数据】{}", event.getName(), event.getData1());
+            @Override
+            void processEvent(ExportEvent event, long sequence, boolean endOfBatch) {
+                event.setData1("data1");
+                log.error("【{}处理第一步数据】{}", event.getName(), event.getData1());
+            }
         };
-        EventHandler<ExportEvent> processData2 = (event, sequence, endOfBatch) -> {
-            // 延迟
-            int second = RandomUtil.randomInt(1, 3);
-            TimeUnit.SECONDS.sleep(second);
-            log.debug("【{}获取第二步数据】耗时：{} 秒", event.getName(), second);
 
-            event.setData2("data2");
-            log.error("【{}处理第二步数据】{}", event.getName(), event.getData2());
+        EventHandler<ExportEvent> processData2 = new SleepExportEventHandler(needSleep) {
+            @Override
+            protected void processSleep(ExportEvent event) {
+                simulateSleep(event.getName(), "处理第二步数据", RandomUtil.randomInt(1, 3));
+            }
+
+            @Override
+            void processEvent(ExportEvent event, long sequence, boolean endOfBatch) {
+                event.setData2("data2");
+                log.error("【{}处理第二步数据】{}", event.getName(), event.getData2());
+            }
         };
-        EventHandler<ExportEvent> processData3 = (event, sequence, endOfBatch) -> {
-            // 延迟
-            int second = RandomUtil.randomInt(3, 6);
-            TimeUnit.SECONDS.sleep(second);
-            log.debug("【{}获取第三步数据】耗时：{} 秒", event.getName(), second);
 
-            event.setData3(event.getData1() + " - data3");
-            log.error("【{}处理第三步数据】{}", event.getName(), event.getData3());
+        EventHandler<ExportEvent> processData3 = new SleepExportEventHandler(needSleep) {
+            @Override
+            protected void processSleep(ExportEvent event) {
+                simulateSleep(event.getName(), "处理第三步数据", RandomUtil.randomInt(3, 6));
+            }
+
+            @Override
+            void processEvent(ExportEvent event, long sequence, boolean endOfBatch) {
+                event.setData3(event.getData1() + " - data3");
+                log.error("【{}处理第三步数据】{}", event.getName(), event.getData3());
+            }
         };
-        EventHandler<ExportEvent> processData4 = (event, sequence, endOfBatch) -> {
-            // 延迟
-            int second = RandomUtil.randomInt(3, 6);
-            TimeUnit.SECONDS.sleep(second);
-            log.debug("【{}获取第四步数据】耗时：{} 秒", event.getName(), second);
 
-            event.setData4(event.getData2() + " - data4");
-            log.error("【{}处理第四步数据】{}", event.getName(), event.getData4());
+        EventHandler<ExportEvent> processData4 = new SleepExportEventHandler(needSleep) {
+            @Override
+            protected void processSleep(ExportEvent event) {
+                simulateSleep(event.getName(), "处理第四步数据", RandomUtil.randomInt(3, 6));
+            }
+
+            @Override
+            void processEvent(ExportEvent event, long sequence, boolean endOfBatch) {
+                event.setData4(event.getData2() + " - data4");
+                log.error("【{}处理第四步数据】{}", event.getName(), event.getData4());
+            }
         };
-        EventHandler<ExportEvent> processData5 = (event, sequence, endOfBatch) -> {
-            // 延迟
-            int second = RandomUtil.randomInt(1, 3);
-            TimeUnit.SECONDS.sleep(second);
-            log.debug("【{}整合数据】耗时：{} 秒", event.getName(), second);
 
-            event.setData(event.getData3() + "::" + event.getData4());
-            log.error("【{}整合数据】{}", event.getName(), event.getData());
+        EventHandler<ExportEvent> processData5 = new SleepExportEventHandler(needSleep) {
+            @Override
+            protected void processSleep(ExportEvent event) {
+                simulateSleep(event.getName(), "整合数据", RandomUtil.randomInt(1, 3));
+            }
+
+            @Override
+            void processEvent(ExportEvent event, long sequence, boolean endOfBatch) {
+                event.setData(event.getData3() + "::" + event.getData4());
+                log.error("【{}整合数据】{}", event.getName(), event.getData());
+            }
         };
 
         // 并行处理 1,2
@@ -122,7 +141,7 @@ public class Test24 {
         disruptor.after(processData2).handleEventsWith(processData4);
         // 3,4 结束处理 5
         disruptor.after(processData3, processData4).handleEventsWith(processData5);
-        disruptor.after(processData5).handleEventsWith(new ExportEventHandler(countDownLatch));
+        disruptor.after(processData5).handleEventsWith(new ExportEventHandler(countDownLatch, needSleep));
         // 设置异常处理
         disruptor.setDefaultExceptionHandler(new FatalExceptionHandler());
 
@@ -147,11 +166,23 @@ public class Test24 {
         timer.start();
         threadList.forEach(ThreadUtil::execute);
         countDownLatch.await();
-        long interval = timer.intervalSecond();
-        log.info("【总耗时】{} 秒", interval);
+        long interval = timer.intervalMs();
+        log.info("【总耗时】{} 毫秒", interval);
 
         // 停止disruptor
         disruptor.shutdown();
+    }
+
+    /**
+     * 模拟延时
+     *
+     * @param name 名称
+     * @param step 步骤
+     */
+    public static void simulateSleep(String name, String step, int second) {
+        // 延迟
+        ThreadUtil.sleep(second, TimeUnit.SECONDS);
+        log.debug("【{}{}】耗时：{} 秒", name, step, second);
     }
 }
 
@@ -235,13 +266,24 @@ class ExportEventFactory implements EventFactory<ExportEvent> {
  * @modified: yangkai.shen
  */
 @Slf4j
-class ExportEventHandler implements EventHandler<ExportEvent> {
+class ExportEventHandler extends SleepExportEventHandler {
     private final CountDownLatch countDownLatch;
 
-    ExportEventHandler(CountDownLatch countDownLatch) {
+    ExportEventHandler(CountDownLatch countDownLatch, boolean needSleep) {
+        super(needSleep);
         this.countDownLatch = countDownLatch;
     }
 
+
+    /**
+     * 延时处理
+     *
+     * @param event 事件
+     */
+    @Override
+    protected void processSleep(ExportEvent event) {
+        Test24.simulateSleep(event.getName(), "导出最终数据", RandomUtil.randomInt(3, 6));
+    }
 
     /**
      * 当生产者往 {@link RingBuffer} 发布事件时会被调用.
@@ -249,19 +291,58 @@ class ExportEventHandler implements EventHandler<ExportEvent> {
      * @param event      在 {@link RingBuffer} 中的事件
      * @param sequence   被处理的事件的位置
      * @param endOfBatch 声明在 {@link RingBuffer} 中是否为批量事件的最后一个标记
-     * @throws Exception 异常
      */
     @Override
-    public void onEvent(ExportEvent event, long sequence, boolean endOfBatch) throws Exception {
-        // 延迟
-        int second = RandomUtil.randomInt(3, 6);
-        TimeUnit.SECONDS.sleep(second);
-
+    void processEvent(ExportEvent event, long sequence, boolean endOfBatch) {
         // 写文件，打印模拟
-        log.debug("【{}导出最终数据】耗时：{} 秒", event.getName(), second);
-        FileUtil.appendUtf8Lines(Collections.singletonList(event.getData()), event.getFile());
+        FileUtil.appendUtf8Lines(Collections.singletonList(event.getName() + event.getData()), event.getFile());
         countDownLatch.countDown();
     }
+}
+
+/**
+ * <p>
+ * 休眠事件处理
+ * </p>
+ *
+ * @package: com.xkcoding.test.test24
+ * @description: 休眠事件处理
+ * @author: yangkai.shen
+ * @date: Created in 2019-05-05 22:06
+ * @copyright: Copyright (c) 2019
+ * @version: V1.0
+ * @modified: yangkai.shen
+ */
+abstract class SleepExportEventHandler implements EventHandler<ExportEvent> {
+    private final boolean needSleep;
+
+    protected SleepExportEventHandler(boolean needSleep) {
+        this.needSleep = needSleep;
+    }
+
+    @Override
+    public void onEvent(ExportEvent event, long sequence, boolean endOfBatch) throws Exception {
+        if (needSleep) {
+            processSleep(event);
+        }
+
+        processEvent(event, sequence, endOfBatch);
+    }
+
+    /**
+     * 延时处理
+     */
+    protected void processSleep(ExportEvent event) {
+    }
+
+    /**
+     * 当生产者往 {@link RingBuffer} 发布事件时会被调用.
+     *
+     * @param event      在 {@link RingBuffer} 中的事件
+     * @param sequence   被处理的事件的位置
+     * @param endOfBatch 声明在 {@link RingBuffer} 中是否为批量事件的最后一个标记
+     */
+    abstract void processEvent(ExportEvent event, long sequence, boolean endOfBatch);
 }
 
 /**
