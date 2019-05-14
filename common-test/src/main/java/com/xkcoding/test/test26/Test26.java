@@ -14,4 +14,7 @@ package com.xkcoding.test.test26;
  * @modified: yangkai.shen
  */
 public class Test26 {
+    public static void main(String[] args) {
+
+    }
 }
