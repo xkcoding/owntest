@@ -30,7 +30,9 @@ import java.util.stream.Collectors;
  */
 public class Test26 {
     private final static String URI = "http://bdms.mchz.com.cn:6999";
-    // 替换成自己的 API_ACCESS_KEY，前往 http://bdms.mchz.com.cn:6999/my/account 获取
+    /**
+     * 替换成自己的 API_ACCESS_KEY，前往 http://bdms.mchz.com.cn:6999/my/account 获取
+     */
     private final static String API_ACCESS_KEY = "***********************";
 
     private final static RedmineManager MGR = RedmineManagerFactory.createWithApiKey(URI, API_ACCESS_KEY);
