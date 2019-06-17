@@ -13,6 +13,13 @@
     <version>${test.version}</version>
 
     <dependencies>
+        <!-- redmine -->
+        <dependency>
+            <groupId>com.taskadapter</groupId>
+            <artifactId>redmine-java-api</artifactId>
+            <version>4.0.0.preview.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
