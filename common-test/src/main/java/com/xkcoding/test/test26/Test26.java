@@ -57,9 +57,12 @@ public class Test26 {
         String startDate = "2019-05-18";
         // 结束时间
         String endDate = "2019-06-17";
-        // 过滤时间
+        // 过滤时间（假期）
         // List<String> ignoreDate = Lists.newArrayList();
-        List<String> ignoreDate = Lists.newArrayList("2019-06-06", "2019-06-07", "2019-06-10", "2019-06-11");
+        List<String> ignoreDate = Lists.newArrayList("2019-06-07");
+        // 请假时间（请假）
+        // List<String> leaveDate = Lists.newArrayList();
+        List<String> leaveDate = Lists.newArrayList("2019-06-06", "2019-06-10", "2019-06-11");
 
         System.out.println("开始时间：" + startDate);
         System.out.println("结束时间：" + endDate);
@@ -76,10 +79,14 @@ public class Test26 {
 
         System.out.println("开始批量创建issues");
         filterDateTime.forEach(dateTime -> {
+            // 是否是请假的
+            boolean isLeaveDate = leaveDate.contains(DateUtil.formatDate(dateTime));
             Issue issue = new Issue(MGR.getTransport(), 147);
             issue.setProjectId(147);
-            issue.setSubject(ME + "-" + DateUtil.format(dateTime, "MM.dd"));
-            issue.setDescription("<p>" + RandomUtil.randomEle(RANDOM_CONTENT) + "</p>");
+            String subject = (ME + "-" + DateUtil.format(dateTime, "MM.dd")) + (!isLeaveDate ? "" : "（请假）");
+            issue.setSubject(subject);
+            String description = "<p>" + (!isLeaveDate ? RandomUtil.randomEle(RANDOM_CONTENT) : "请假") + "</p>";
+            issue.setDescription(description);
             issue.setAssigneeId(350);
             issue.setStartDate(DateUtil.parseDate(DateUtil.formatDate(dateTime)));
             issue.setStatusId(1);
