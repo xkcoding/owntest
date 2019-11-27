@@ -1,0 +1,1 @@
+function (k, v) {return v.value === v.relation}
