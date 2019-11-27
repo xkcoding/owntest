@@ -8,10 +8,12 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.BasicBSONObject;
+import org.bson.Document;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.mapreduce.MapReduceResults;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
@@ -66,6 +68,8 @@ public class Test40 {
 
         List<BasicBSONObject> mappedResults = aggregate.getMappedResults();
 
+        MONGO_TEMPLATE.dropCollection(JoinDataVO.class);
+
         mappedResults.forEach(v -> {
             JSONObject parse = JSONUtil.parseObj(v);
 
@@ -79,11 +83,10 @@ public class Test40 {
             MONGO_TEMPLATE.save(joinDataVO);
         });
 
-        MapReduceResults<Map> joinData = MONGO_TEMPLATE.mapReduce("join_data", "function() {emit(this.sourceId, {value:this.value,relation:this.relation});}", "function (k, v) {return v.value == v.relation}", Map.class);
+        BasicQuery query =new BasicQuery("{ $expr: { $ne: [ \"$value\" , \"$relation\" ] } } ");
+        List<JoinDataVO> joinDataVOS = MONGO_TEMPLATE.find(query, JoinDataVO.class);
 
-        for (Map joinDatum : joinData) {
-            System.out.println("joinDatum = " + joinDatum);
-        }
+        System.out.println(JSONUtil.toJsonStr(joinDataVOS));
 
     }
 
