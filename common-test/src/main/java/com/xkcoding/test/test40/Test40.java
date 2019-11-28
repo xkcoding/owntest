@@ -12,9 +12,9 @@ import org.bson.Document;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.mapreduce.MapReduceResults;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.HashMap;
@@ -54,11 +54,35 @@ public class Test40 {
 
         // test40.queryData2JoinData1_2();
 
-        test40.queryDuplicateData();
+        // test40.queryDuplicateData();
+
+        test40.advanceQuery();
 
         // test40.deleteData();
 
         // test40.drop();
+    }
+
+    /**
+     * 比较 value 字段中间 2 位和 relation 字段后 2 位是否相等
+     */
+    private void advanceQuery() {
+        CriteriaDefinition cd = new CriteriaDefinition() {
+            @Override
+            public Document getCriteriaObject() {
+                Document document = new Document();
+                document.put("$where", "this.value.substr(2, 2) === this.relation.substr(this.relation.length - 2, 2)");
+                return document;
+            }
+
+            @Override
+            public String getKey() {
+                return null;
+            }
+        };
+        List<JoinDataVO> joinDataVOS = MONGO_TEMPLATE.find(Query.query(cd), JoinDataVO.class);
+
+        System.out.println(JSONUtil.toJsonStr(joinDataVOS));
     }
 
     private void queryDuplicateData() {
@@ -83,7 +107,7 @@ public class Test40 {
             MONGO_TEMPLATE.save(joinDataVO);
         });
 
-        BasicQuery query =new BasicQuery("{ $expr: { $ne: [ \"$value\" , \"$relation\" ] } } ");
+        BasicQuery query = new BasicQuery("{ $expr: { $ne: [ \"$value\" , \"$relation\" ] } } ");
         List<JoinDataVO> joinDataVOS = MONGO_TEMPLATE.find(query, JoinDataVO.class);
 
         System.out.println(JSONUtil.toJsonStr(joinDataVOS));
