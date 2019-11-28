@@ -71,7 +71,7 @@ public class Test40 {
             @Override
             public Document getCriteriaObject() {
                 Document document = new Document();
-                document.put("$where", "this.value.substr(2, 2) === this.relation.substr(this.relation.length - 2, 2)");
+                document.put("$where", "this.value.substr(2, 2) !== this.relation.substr(this.relation.length - 2, 2)");
                 return document;
             }
 
