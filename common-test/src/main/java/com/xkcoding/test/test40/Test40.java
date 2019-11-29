@@ -12,7 +12,6 @@ import org.bson.Document;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
@@ -107,8 +106,21 @@ public class Test40 {
             MONGO_TEMPLATE.save(joinDataVO);
         });
 
-        BasicQuery query = new BasicQuery("{ $expr: { $ne: [ \"$value\" , \"$relation\" ] } } ");
-        List<JoinDataVO> joinDataVOS = MONGO_TEMPLATE.find(query, JoinDataVO.class);
+        CriteriaDefinition cd = new CriteriaDefinition() {
+            @Override
+            public Document getCriteriaObject() {
+                Document document = new Document();
+                document.put("$where", "this.value !== this.relation");
+                return document;
+            }
+
+            @Override
+            public String getKey() {
+                return null;
+            }
+        };
+
+        List<JoinDataVO> joinDataVOS = MONGO_TEMPLATE.find(Query.query(cd), JoinDataVO.class);
 
         System.out.println(JSONUtil.toJsonStr(joinDataVOS));
 
