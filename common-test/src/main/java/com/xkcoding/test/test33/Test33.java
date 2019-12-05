@@ -1,5 +1,7 @@
 package com.xkcoding.test.test33;
 
+import java.util.Date;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 /**
@@ -24,5 +26,14 @@ public class Test33 {
         Consumer<Integer> func2 = integer -> System.out.println("integer = " + integer);
 
         func1.accept(1);
+
+        AtomicReference<Date> date = new AtomicReference<>();
+        testConsumer(date::set);
+        System.out.println(date.get());
+    }
+
+    private static void testConsumer(Consumer<Date> dateConsumer) {
+        Date date = new Date();
+        dateConsumer.accept(date);
     }
 }
