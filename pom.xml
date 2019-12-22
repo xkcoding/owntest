@@ -34,6 +34,7 @@
     <webmagic.version>0.7.3</webmagic.version>
     <oshi.version>3.9.1</oshi.version>
     <distruptor.version>3.4.2</distruptor.version>
+    <jfinal.enjoy.version>4.8</jfinal.enjoy.version>
     <scaffold.version>1.0.9</scaffold.version>
   </properties>
 
@@ -144,6 +145,12 @@
         <groupId>com.lmax</groupId>
         <artifactId>disruptor</artifactId>
         <version>${distruptor.version}</version>
+      </dependency>
+      <!-- JFinal Enjoy 模板 -->
+      <dependency>
+        <groupId>com.jfinal</groupId>
+        <artifactId>enjoy</artifactId>
+        <version>${jfinal.enjoy.version}</version>
       </dependency>
       <dependency>
         <groupId>com.xkcoding</groupId>

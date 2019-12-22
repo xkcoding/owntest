@@ -132,6 +132,13 @@
             <artifactId>mica-http</artifactId>
             <version>1.1.9</version>
         </dependency>
+
+        <!-- JFinal Enjoy 模板 -->
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>enjoy</artifactId>
+            <version>${jfinal.enjoy.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
