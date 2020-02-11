@@ -6,7 +6,7 @@
 
   <groupId>com.xkcoding</groupId>
   <artifactId>own-test</artifactId>
-  <version>${test.version}</version>
+  <version>1.0-SNAPSHOT</version>
   <modules>
     <module>common-test</module>
     <module>spring-boot-test</module>
