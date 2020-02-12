@@ -2012,9 +2012,6 @@
           <w:pPr>
             <w:pStyle w:val="a8"/>
           </w:pPr>
-          <w:r>
-            <w:ptab w:relativeTo="margin" w:alignment="center" w:leader="none"/>
-          </w:r>
           <w:r w:rsidRPr="005B69F9">
             <w:rPr>
               <w:rFonts w:ascii="黑体" w:eastAsia="黑体" w:hAnsi="黑体"/>
@@ -2086,9 +2083,6 @@
               <w:lang w:val="zh-CN"/>
             </w:rPr>
             <w:t>页</w:t>
-          </w:r>
-          <w:r>
-            <w:ptab w:relativeTo="margin" w:alignment="right" w:leader="none"/>
           </w:r>
         </w:p>
       </w:ftr>

@@ -121,13 +121,11 @@ public class Test44_1 {
     private Map<String, Object> initData() {
         Map<String, Object> data = new HashMap<>(4);
 
-        data.put("createTime", DateUtil.format(new Date(), "yyyy-MM-dd HH:mm"));
+        data.put("createTime", DateUtil.now());
 
-        ResultAnalyse a = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), DateUtil
-                .now(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
+        ResultAnalyse a = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), RandomUtil.randomDay(-10,-1).toString(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
 
-        ResultAnalyse b = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), DateUtil
-                .now(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
+        ResultAnalyse b = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), RandomUtil.randomDay(-10,-1).toString(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
 
         data.put("a", a);
         data.put("b", b);
