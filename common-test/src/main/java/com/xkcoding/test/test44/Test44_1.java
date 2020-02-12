@@ -19,7 +19,10 @@ import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -123,9 +126,13 @@ public class Test44_1 {
 
         data.put("createTime", DateUtil.now());
 
-        ResultAnalyse a = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), RandomUtil.randomDay(-10,-1).toString(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
+        ResultAnalyse a = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), RandomUtil
+                .randomDay(-10, -1)
+                .toString(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
 
-        ResultAnalyse b = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), RandomUtil.randomDay(-10,-1).toString(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
+        ResultAnalyse b = new ResultAnalyse(IdUtil.fastSimpleUUID(), "测试任务 1", Lists.newArrayList("192.168.241.1-192.168.241.255", "192.168.241.1-192.168.241.255"), RandomUtil
+                .randomDay(-10, -1)
+                .toString(), RandomUtil.randomInt(10, 30), RandomUtil.randomInt(10, 30));
 
         data.put("a", a);
         data.put("b", b);
