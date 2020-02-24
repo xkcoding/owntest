@@ -66,6 +66,7 @@ public class Test44 {
     @SneakyThrows
     private void processFonts(WordprocessingMLPackage wmlPackage) {
         Mapper fontMapper = new IdentityPlusMapper();
+        PhysicalFonts.discoverPhysicalFonts();
         fontMapper.put("隶书", PhysicalFonts.get("LiSu"));
         fontMapper.put("宋体", PhysicalFonts.get("SimSun"));
         fontMapper.put("微软雅黑", PhysicalFonts.get("Microsoft Yahei"));
