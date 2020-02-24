@@ -18,9 +18,9 @@ import java.util.Map;
  */
 public class Test46 {
     public static void main(String[] args) {
-        // shellTest();
-        // test1();
-        // test2();
+        shellTest();
+        test1();
+        test2();
         test3();
     }
 
@@ -47,6 +47,7 @@ public class Test46 {
      * 规则：字段1 in () 单选，如果字段1=数字，则字段2长度<=5
      */
     private static void test2() {
+        //language=Groovy
         String script = "if (list.contains(x)) {\n" + "    return x == 1 && y.toString().length() <= 5\n" + "} e" + "lse {\n" + "    return false\n" + "}";
 
         Map<String, Object> params = new HashMap<>();
@@ -87,6 +88,7 @@ public class Test46 {
         Binding binding = new Binding();
         bindingVar(binding, params);
 
+        //language=Groovy
         String script = "println \"Welcome to $language\"; y = x * 2; z = x * 3; return x ";
         final Integer value = eval(binding, script, Integer.class);
 
