@@ -100,6 +100,7 @@ public class Test46 {
     private static <T> T eval(Binding binding, String script, Class<T> clazz) {
         GroovyShell shell = new GroovyShell(binding);
         Object value = shell.evaluate(script);
+        // clear cache
         shell.getClassLoader().clearCache();
 
         return Convert.convert(clazz, value);
