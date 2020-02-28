@@ -10,16 +10,16 @@ scaffold:
     table-prefix: t_
   notification:
     dingtalk:
-      webhook: https://oapi.dingtalk.com/robot/send?access_token=65577928e22e8417fa7740ed86e1cc9980c933ab28207bb540e2d22ed42cda0b
+      webhook: https://oapi.dingtalk.com/robot/send?access_token=65577***********17fa***********2ed42cda0b
       enabled: true
     email:
       enabled: true
     aliyun:
       enabled: true
-      access-key: heU9MpnYWyUmvJFY
-      secret-key: InZ1JBqn0RnUUD2ziLVAe1OtmQaP33
+      access-key: heU9***********mvJFY
+      secret-key: InZ1*****************mQaP33
       channels:
-        article_notification: SMS_160576086
+        article_notification: SMS_16***********86
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -49,7 +49,7 @@ spring:
     host: smtp.qq.com
     port: 465
     username: 237497819@qq.com
-    password: izbirtnpqsancade
+    password: izb***********de
     protocol: smtp
     test-connection: true
     default-encoding: UTF-8
